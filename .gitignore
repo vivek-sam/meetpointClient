@@ -59,3 +59,8 @@ typings/
 
 # next.js build output
 .next
+wallet/certificate.crt
+*.pem
+wallet/ca-crt.srl
+wallet/client1.cnf
+wallet/mywebcertificate.crt

@@ -2,9 +2,19 @@ var tls = require('tls');
 var fs = require('fs');
 var PORT = 7443;
 var HOST = 'viveksam.southindia.cloudapp.azure.com';
+var key = fs.readFileSync('wallet/client1-key.pem');
+var cert = fs.readFileSync('wallet/client1-crt.pem');
+var ca = fs.readFileSync('wallet/ca-crt.pem');
 
-var options = { ca: [ fs.readFileSync('wallet/cert.pem') ] };
-var client = tls.connect(PORT, HOST, options, function() {
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+
+var https_options = {
+    key: key,
+    cert: cert,
+    ca: ca
+};
+
+var client = tls.connect(PORT, HOST, https_options, function() {
     if (client.authorized) {
         
         console.log('CONNECTED AND AUTHORIZED\n');

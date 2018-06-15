@@ -1,0 +1,19 @@
+{
+  "name": "meetpointclient",
+  "version": "18.6.15",
+  "description": "Client for meetpointServer",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivek-sam/meetpointClient.git"
+  },
+  "author": "Vivek Sam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vivek-sam/meetpointClient/issues"
+  },
+  "homepage": "https://github.com/vivek-sam/meetpointClient#readme"
+}
