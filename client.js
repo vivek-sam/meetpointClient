@@ -73,6 +73,8 @@ function callback(error, response, body) {
         if(info.operation.toString() === "addhost") {
             if(info.status.toString() === "SUCCESS") {
                 logger.info('Succesfully added host...');
+
+                listrequestbody.emit('list');
             } else {
                 //problem with addhost
             }            
@@ -146,6 +148,27 @@ addrequestbody.on('send', function () {
    
     var request_options = {
         uri: 'https://viveksam.southindia.cloudapp.azure.com:7443/addhost',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        json: {
+            'token': recognizedToken,
+            'hostMachine': machineName,
+            'hostWANIP' : IPAddress.toString()
+        }
+    };
+
+    console.log(request_options);
+    request(request_options,callback);
+
+});
+
+listrequestbody.on('list', function () {
+    logger.info("Listing Servers");
+   
+    var request_options = {
+        uri: 'https://viveksam.southindia.cloudapp.azure.com:7443/showhosts',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
